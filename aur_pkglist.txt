@@ -1,3 +1,2 @@
 yay
 yay-debug
-zen-browser
