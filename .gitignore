@@ -1,0 +1,19 @@
+# Кеши и временные файлы
+*.cache
+*.log
+*.swp
+*~
+
+# Приватные данные
+.ssh/
+.gnupg/
+*_history
+.bash_history
+.zsh_history
+
+# Специфичные для системы файлы
+.Xauthority
+.fehbg
+
+# Резервные копии
+*.backup.*
