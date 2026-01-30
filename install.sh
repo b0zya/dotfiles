@@ -107,9 +107,13 @@ fi
 # 6. Финальные настройки
 echo -e "${GREEN}[6/6] Финальные настройки...${NC}"
 
-# Включение systemd сервисов (если нужно)
-# systemctl --user enable --now pipewire.service
-# systemctl --user enable --now wireplumber.service
+# Включение systemd сервисов (пользовательские)
+echo -e "${GREEN}Включение systemd сервисов пользователя...${NC}"
+while IFS= read -r service; do
+    if [ -n "$service" ] && [ "$service" != "UNIT" ]; then
+        systemctl --user enable "$service" 2>/dev/null || echo "Не удалось включить: $service"
+    fi
+done < systemd/user-enabled.txt
 
 echo -e "${GREEN}=== Установка завершена! ===${NC}"
 echo -e "${YELLOW}Рекомендуется перезагрузиться: sudo reboot${NC}"
